@@ -1,5 +1,3 @@
-USE AttendanceDB;
-GO
 
 USE AttendanceDB;
 GO

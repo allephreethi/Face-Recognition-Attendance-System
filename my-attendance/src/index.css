@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===========================
+   🌸 Light Theme Animations & Styles
+   =========================== */
+
 /* Fade-in animation */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
@@ -11,13 +15,86 @@
   animation: fadeIn 0.5s ease forwards;
 }
 
-/* Gradient background animation */
-@keyframes gradient-x {
+/* Soft animated gradient background */
+@keyframes gradientMove {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-.animate-gradient-x {
-  background-size: 200% 200%;
-  animation: gradient-x 10s ease infinite;
+.bg-animated-gradient {
+  background: linear-gradient(-45deg, #fdfbfb, #ebedee, #e0f7fa, #e8f5e9);
+  background-size: 400% 400%;
+  animation: gradientMove 14s ease infinite;
+}
+
+/* Glassmorphism card (light style) */
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(200, 200, 200, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+/* Glow & Shine Buttons (light gradient) */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-glow::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  transform: skewX(-20deg);
+}
+
+.btn-glow:hover::after {
+  animation: shine 0.8s forwards;
+}
+
+@keyframes shine {
+  100% { left: 125%; }
+}
+
+/* Success pulse effect */
+@keyframes successPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+.success-badge {
+  animation: successPulse 0.6s ease-in-out;
+}
+
+/* Error shake effect */
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+.error-shake {
+  animation: errorShake 0.4s ease-in-out;
+}
+
+/* Floating background bubbles */
+@keyframes floatUp {
+  0% { transform: translateY(100vh) scale(0.5); opacity: 0.25; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+.bubble {
+  position: absolute;
+  bottom: -10%;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: floatUp 14s infinite ease-in;
 }
